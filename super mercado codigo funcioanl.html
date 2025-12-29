@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Ainara Super Market</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+        /* ================== ESTILOS GENERALES ================== */
+        :root{
+            --verde:#00c853;
+            --verde-oscuro:#009624;
+            --azul:#0277bd;
+            --azul-oscuro:#01579b;
+            --naranja:#ff9800;
+            --naranja-oscuro:#ef6c00;
+            --gris-fondo:#f5f7fa;
+            --gris-claro:#fafafa;
+            --texto:#333333;
+        }
+
+        *{
+            box-sizing:border-box;
+            margin:0;
+            padding:0;
+        }
+
+        body{
+            font-family:Arial, Helvetica, sans-serif;
+            background:var(--gris-fondo);
+            color:var(--texto);
+            line-height:1.5;
+        }
+
+        a{
+            text-decoration:none;
+        }
+
+        img{
+            max-width:100%;
+            display:block;
+        }
+
+        /* ================== HEADER ================== */
+        header{
+            background:linear-gradient(90deg, var(--verde), var(--azul));
+            color:#ffffff;
+            padding:18px 10px;
+        }
+
+        .top-bar{
+            max-width:1200px;
+            margin:0 auto;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:10px;
+            font-size:0.9rem;
+        }
+
+        .top-bar span{
+            margin-right:10px;
+        }
+
+        .top-bar strong{
+            color:#ffe082;
+        }
+
+        .header-main{
+            max-width:1200px;
+            margin:10px auto 0 auto;
+            display:flex;
+            flex-wrap:wrap;
+            align-items:center;
+            justify-content:space-between;
+            gap:15px;
+        }
+
+        .logo-area{
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
+
+        .logo-icon{
+            width:55px;
+            height:55px;
+            border-radius:50%;
+            background:radial-gradient(circle, #ffffff 20%, var(--naranja) 60%, var(--verde) 100%);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-weight:bold;
+            font-size:1.3rem;
+            color:var(--azul-oscuro);
+            border:2px solid #ffffff;
+        }
+
+        .logo-text h1{
+            font-size:1.9rem;
+            margin-bottom:2px;
+        }
+
+        .logo-text p{
+            font-size:0.9rem;
+            opacity:0.9;
+        }
+
+        .header-search{
+            flex:1;
+            min-width:260px;
+            display:flex;
+            gap:5px;
+        }
+
+        .header-search input{
+            flex:1;
+            padding:8px 10px;
+            border-radius:20px;
+            border:none;
+            outline:none;
+        }
+
+        .header-search button{
+            padding:8px 16px;
+            border-radius:20px;
+            border:none;
+            background:var(--naranja);
+            color:#ffffff;
+            font-weight:bold;
+            cursor:pointer;
+        }
+
+        .header-search button:hover{
+            background:var(--naranja-oscuro);
+        }
+
+        .header-contact{
+            text-align:right;
+            font-size:0.9rem;
+        }
+
+        /* ================== NAV ================== */
+        nav{
+            background:#ffffff;
+            box-shadow:0 2px 4px rgba(0,0,0,0.06);
+            position:sticky;
+            top:0;
+            z-index:50;
+        }
+
+        .nav-inner{
+            max-width:1200px;
+            margin:0 auto;
+            display:flex;
+            flex-wrap:wrap;
+            align-items:center;
+            justify-content:space-between;
+            padding:8px 10px;
+        }
+
+        .nav-links{
+            display:flex;
+            flex-wrap:wrap;
+            gap:8px;
+        }
+
+        .nav-links a{
+            padding:6px 12px;
+            border-radius:18px;
+            font-size:0.9rem;
+            color:var(--azul-oscuro);
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        .nav-links a:hover{
+            background:var(--azul);
+            color:#ffffff;
+        }
+
+        .nav-badge{
+            background:var(--naranja);
+            color:#ffffff;
+            padding:4px 10px;
+            border-radius:15px;
+            font-size:0.8rem;
+        }
+
+        /* ================== CONTENEDOR GENERAL ================== */
+        .contenedor{
+            max-width:1200px;
+            margin:18px auto;
+            padding:0 10px;
+        }
+
+        section{
+            margin-bottom:25px;
+            background:#ffffff;
+            border-radius:10px;
+            padding:18px 15px;
+            box-shadow:0 2px 6px rgba(0,0,0,0.04);
+        }
+
+        section h2{
+            margin-bottom:10px;
+            border-left:4px solid var(--verde);
+            padding-left:8px;
+            color:var(--azul-oscuro);
+        }
+
+        /* ================== SECCIÓN HERO / INICIO ================== */
+        .hero{
+            display:grid;
+            grid-template-columns:2fr 1fr;
+            gap:15px;
+        }
+
+        .hero-main{
+            background:linear-gradient(90deg, var(--verde), var(--naranja));
+            border-radius:12px;
+            padding:18px;
+            color:#ffffff;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .hero-main h3{
+            font-size:1.6rem;
+            margin-bottom:8px;
+        }
+
+        .hero-main p{
+            max-width:430px;
+        }
+
+        .hero-tag{
+            display:inline-block;
+            background:#ffffff;
+            color:var(--verde-oscuro);
+            padding:4px 10px;
+            border-radius:20px;
+            font-size:0.8rem;
+            font-weight:bold;
+            margin-bottom:8px;
+        }
+
+        .hero-badge{
+            position:absolute;
+            right:15px;
+            bottom:12px;
+            background:#ffffff;
+            color:var(--naranja-oscuro);
+            padding:10px 12px;
+            border-radius:12px;
+            font-size:0.9rem;
+            font-weight:bold;
+            box-shadow:0 2px 6px rgba(0,0,0,0.12);
+        }
+
+        .hero-side{
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+        }
+
+        .hero-box{
+            background:var(--gris-claro);
+            border-radius:10px;
+            padding:10px 12px;
+            border-left:4px solid var(--azul);
+            font-size:0.85rem;
+        }
+
+        .hero-box strong{
+            color:var(--azul-oscuro);
+        }
+
+        /* ================== GRID GENERAL DE PRODUCTOS ================== */
+        .grid-productos{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+            gap:12px;
+        }
+
+        .producto{
+            background:var(--gris-claro);
+            border-radius:10px;
+            padding:10px;
+            border:1px solid #e0e0e0;
+            text-align:center;
+            transition:0.25s;
+        }
+
+        .producto:hover{
+            transform:translateY(-3px);
+            box-shadow:0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .producto-categoria{
+            font-size:0.75rem;
+            color:#ffffff;
+            background:var(--azul);
+            padding:2px 8px;
+            border-radius:10px;
+            display:inline-block;
+            margin-bottom:4px;
+        }
+
+        .producto h3{
+            font-size:0.95rem;
+            margin-bottom:4px;
+            color:var(--texto);
+        }
+
+        .producto .precio{
+            color:var(--naranja-oscuro);
+            font-weight:bold;
+            margin-bottom:4px;
+        }
+
+        .producto .detalle{
+            font-size:0.8rem;
+            color:#666666;
+            margin-bottom:5px;
+        }
+
+        .btn-comprar{
+            border:none;
+            padding:6px 12px;
+            border-radius:20px;
+            background:var(--verde);
+            color:#ffffff;
+            font-size:0.8rem;
+            cursor:pointer;
+            font-weight:bold;
+        }
+
+        .btn-comprar:hover{
+            background:var(--verde-oscuro);
+        }
+
+        /* ================== CATEGORÍAS DESTACADAS ================== */
+        .categorias-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+            gap:10px;
+        }
+
+        .categoria-card{
+            border-radius:10px;
+            color:#ffffff;
+            padding:10px;
+            font-size:0.9rem;
+        }
+
+        .categoria-frutas{background:linear-gradient(135deg,var(--verde),#a5d6a7);}
+        .categoria-lacteos{background:linear-gradient(135deg,var(--azul),#90caf9);}
+        .categoria-limpieza{background:linear-gradient(135deg,var(--naranja),#ffe082);}
+        .categoria-bebidas{background:linear-gradient(135deg,#673ab7,#b39ddb);}
+        .categoria-snacks{background:linear-gradient(135deg,#e91e63,#f8bbd0);}
+        .categoria-hogar{background:linear-gradient(135deg,#455a64,#cfd8dc);}
+
+        .categoria-card h3{
+            margin-bottom:5px;
+        }
+
+        .categoria-card ul{
+            margin-left:18px;
+            font-size:0.8rem;
+        }
+
+        /* ================== SECCIÓN VIDEOS ================== */
+        .videos-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+            gap:12px;
+        }
+
+        .video-card{
+            background:var(--gris-claro);
+            border-radius:10px;
+            padding:10px;
+            border:1px solid #e0e0e0;
+        }
+
+        .video-card h3{
+            font-size:0.95rem;
+            margin-bottom:4px;
+        }
+
+        .video-card p{
+            font-size:0.8rem;
+            color:#555555;
+            margin-top:4px;
+        }
+
+        video{
+            width:100%;
+            border-radius:8px;
+            background:#000000;
+        }
+
+        /* ================== SECCIÓN INFO / NOSOTROS ================== */
+        .info-grid{
+            display:grid;
+            grid-template-columns:2fr 1fr;
+            gap:14px;
+        }
+
+        .info-grid ul{
+            margin-left:18px;
+            font-size:0.9rem;
+        }
+
+        .tarjeta-color{
+            border-radius:10px;
+            padding:10px;
+            color:#ffffff;
+            font-size:0.9rem;
+        }
+
+        .tarjeta-verde{background:var(--verde);}
+        .tarjeta-azul{background:var(--azul);}
+        .tarjeta-naranja{background:var(--naranja);}
+
+        /* ================== FORMULARIOS ================== */
+        form label{
+            font-weight:bold;
+            font-size:0.88rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select{
+            width:100%;
+            padding:8px;
+            margin:4px 0 10px 0;
+            border-radius:6px;
+            border:1px solid #cccccc;
+            font-size:0.9rem;
+        }
+
+        textarea{
+            resize:vertical;
+        }
+
+        input[type="submit"],
+        .btn-form{
+            background:var(--azul);
+            color:#ffffff;
+            border:none;
+            padding:8px 15px;
+            border-radius:20px;
+            cursor:pointer;
+            font-weight:bold;
+            font-size:0.9rem;
+        }
+
+        input[type="submit"]:hover,
+        .btn-form:hover{
+            background:var(--azul-oscuro);
+        }
+
+        /* ================== TABLAS (LISTAS DE PRECIOS) ================== */
+        table{
+            width:100%;
+            border-collapse:collapse;
+            font-size:0.85rem;
+        }
+
+        th, td{
+            border:1px solid #e0e0e0;
+            padding:6px 8px;
+            text-align:left;
+        }
+
+        th{
+            background:#e3f2fd;
+        }
+
+        /* ================== FOOTER ================== */
+        footer{
+            background:#263238;
+            color:#ffffff;
+            margin-top:25px;
+            padding:18px 10px;
+        }
+
+        .footer-grid{
+            max-width:1200px;
+            margin:0 auto;
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+            gap:12px;
+            font-size:0.85rem;
+        }
+
+        .footer-bottom{
+            text-align:center;
+            font-size:0.8rem;
+            margin-top:8px;
+        }
+
+        footer a{
+            color:#ffcc80;
+        }
+
+        /* ================== RESPONSIVE ================== */
+        @media(max-width:768px){
+            .hero{
+                grid-template-columns:1fr;
+            }
+            .info-grid{
+                grid-template-columns:1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================== HEADER ================== -->
+    <header>
+        <div class="top-bar">
+            <div>
+                <span>📍 Santo Domingo Este, RD</span>
+                <span>⏰ Horario: 7:00 a.m. - 10:00 p.m.</span>
+            </div>
+            <div>
+                <span>Tel: <strong>(809) 000-0000</strong></span>
+                <span>WhatsApp: <strong>+1 809-000-0000</strong></span>
+            </div>
+        </div>
+
+        <div class="header-main">
+            <div class="logo-area">
+                <div class="logo-icon">AS</div>
+                <div class="logo-text">
+                    <h1>Ainara Super Market</h1>
+                    <p>Frescura, ahorro y servicio para tu familia</p>
+                </div>
+            </div>
+
+            <div class="header-search">
+                <input type="text" placeholder="Buscar productos (arroz, leche, jugos, limpieza...)" />
+                <button>Buscar</button>
+            </div>
+
+            <div class="header-contact">
+                <div>Entrega a domicilio disponible</div>
+                <div>Pedidos especiales para empresas</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================== NAV ================== -->
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#ofertas">Ofertas</a>
+                <a href="#frutas">Frutas</a>
+                <a href="#lacteos">Lácteos</a>
+                <a href="#carnes">Carnes</a>
+                <a href="#limpieza">Limpieza</a>
+                <a href="#bebidas">Bebidas</a>
+                <a href="#snacks">Snacks</a>
+                <a href="#hogar">Hogar</a>
+                <a href="#videos">Videos</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <div class="nav-badge">
+                🔥 Promo fin de semana: 2x1 en snacks seleccionados
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================== CONTENIDO ================== -->
+    <div class="contenedor">
+
+        <!-- INICIO / HERO -->
+        <section id="inicio">
+            <h2>Bienvenido a Ainara Super Market</h2>
+            <div class="hero">
+                <div class="hero-main">
+                    <div class="hero-tag">Entrega rápida en tu zona</div>
+                    <h3>Todo lo que necesitas, en un solo lugar</h3>
+                    <p>
+                        Ainara Super Market combina variedad, frescura y precios competitivos
+                        para que puedas hacer tu compra completa sin complicaciones.
+                    </p>
+                    <div class="hero-badge">
+                        💳 Aceptamos todas las tarjetas <br />
+                        🛒 Programa de puntos para clientes frecuentes
+                    </div>
+                </div>
+
+                <div class="hero-side">
+                    <div class="hero-box">
+                        <strong>Miércoles verdes:</strong> descuentos en frutas y vegetales
+                        seleccionados para que cuides tu salud y tu bolsillo.
+                    </div>
+                    <div class="hero-box">
+                        <strong>Noches anaranjadas:</strong> ofertas especiales en snacks y
+                        bebidas después de las 7:00 p.m.
+                    </div>
+                    <div class="hero-box">
+                        <strong>Zona azul:</strong> productos lácteos y refrigerados siempre
+                        frescos, con cadena de frío garantizada.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OFERTAS -->
+        <section id="ofertas">
+            <h2>Ofertas destacadas de la semana</h2>
+            <div class="grid-productos">
+                <div class="producto">
+                    <div class="producto-categoria">Abarrotes</div>
+                    <h3>Arroz premium 10 lb</h3>
+                    <div class="precio">RD$ 329</div>
+                    <div class="detalle">Antes RD$ 360. Grano largo selecto para tu mesa diaria.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="producto-categoria">Aceites</div>
+                    <h3>Aceite vegetal 1 L</h3>
+                    <div class="precio">RD$ 145</div>
+                    <div class="detalle">Ideal para freír y cocinar con menor absorción de grasa.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="producto-categoria">Carnes</div>
+                    <h3>Pollo entero fresco</h3>
+                    <div class="precio">RD$ 175 / lb</div>
+                    <div class="detalle">Pollo del día, empacado con medidas de higiene estrictas.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="producto-categoria">Lácteos</div>
+                    <h3>Leche entera 1 L</h3>
+                    <div class="precio">RD$ 75</div>
+                    <div class="detalle">Leche pasteurizada con excelente sabor y consistencia.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORÍAS DESTACADAS -->
+        <section id="categorias">
+            <h2>Categorías principales</h2>
+            <div class="categorias-grid">
+                <div class="categoria-card categoria-frutas">
+                    <h3>Frutas y vegetales</h3>
+                    <p>Productos frescos seleccionados diariamente.</p>
+                    <ul>
+                        <li>Frutas tropicales de temporada</li>
+                        <li>Vegetales para ensaladas</li>
+                        <li>Hierbas frescas para cocinar</li>
+                    </ul>
+                </div>
+
+                <div class="categoria-card categoria-lacteos">
+                    <h3>Lácteos y huevos</h3>
+                    <p>Línea completa de productos refrigerados.</p>
+                    <ul>
+                        <li>Leches, yogures y quesos</li>
+                        <li>Mantequillas y cremas</li>
+                        <li>Huevos frescos de granja</li>
+                    </ul>
+                </div>
+
+                <div class="categoria-card categoria-limpieza">
+                    <h3>Limpieza del hogar</h3>
+                    <p>Todo lo que necesitas para tu casa.</p>
+                    <ul>
+                        <li>Detergentes líquidos y en polvo</li>
+                        <li>Desinfectantes y cloros</li>
+                        <li>Ambientadores y suavizantes</li>
+                    </ul>
+                </div>
+
+                <div class="categoria-card categoria-bebidas">
+                    <h3>Bebidas y jugos</h3>
+                    <p>Refrescos, aguas, jugos y más.</p>
+                    <ul>
+                        <li>Aguas purificadas y con gas</li>
+                        <li>Jugos naturales y néctares</li>
+                        <li>Refrescos en distintos tamaños</li>
+                    </ul>
+                </div>
+
+                <div class="categoria-card categoria-snacks">
+                    <h3>Snacks y dulces</h3>
+                    <p>Opciones para todos los gustos.</p>
+                    <ul>
+                        <li>Papitas, palomitas y nachos</li>
+                        <li>Galletas y chocolates</li>
+                        <li>Snacks saludables</li>
+                    </ul>
+                </div>
+
+                <div class="categoria-card categoria-hogar">
+                    <h3>Hogar y cocina</h3>
+                    <p>Artículos básicos para tu día a día.</p>
+                    <ul>
+                        <li>Platos, vasos y cubiertos</li>
+                        <li>Utensilios de cocina</li>
+                        <li>Bolsas, envases y más</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FRUTAS -->
+        <section id="frutas">
+            <h2>Frutas frescas</h2>
+            <div class="grid-productos">
+                <div class="producto">
+                    <div class="producto-categoria">Frutas</div>
+                    <h3>Manzana roja</h3>
+                    <div class="precio">RD$ 60 / unidad</div>
+                    <div class="detalle">Crujiente y jugosa, ideal para meriendas saludables.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="producto-categoria">Frutas</div>
+                    <h3>Banano maduro</h3>
+                    <div class="precio">RD$ 10 / unidad</div>
+                    <div class="detalle">Perfecto para batidas y desayunos energéticos.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="producto-categoria">Frutas</div>
+                    <h3>Naranja dulce</h3>
+                    <div class="precio">RD$ 15 / unidad</div>
+                    <div class="detalle">Excelente para jugos naturales de alto contenido en vitamina C.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="producto-categoria">Frutas</div>
+                    <h3>Uvas moradas 500 g</h3>
+                    <div class="precio">RD$ 120</div>
+                    <div class="detalle">Dulces y prácticas para compartir en familia.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- LÁCTEOS -->
+        <section id="lacteos">
+            <h2>Productos lácteos</h2>
+            <div class="grid-productos">
+                <div class="producto">
+                    <div class="producto-categoria">Lácteos</div>
+                    <h3>Leche descremada 1 L</h3>
+                    <div class="precio">RD$ 80</div>
+                    <div class="detalle">Opción ligera con menor contenido de grasa.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="producto-categoria">Lácteos</div>
+                    <h3>Queso mozzarella 200 g</h3>
+                    <div class="precio">RD$ 160</div>
+                    <div class="detalle">Ideal para pizzas y recetas gratinadas.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="producto-categoria">Lácteos</div>
+                    <h3>Yogur sabor fresa 1 L</h3>
+                    <div class="precio">RD$ 115</div>
+                    <div class="detalle">Bebida cremosa para toda la familia.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="producto-categoria">Lácteos</div>
+                    <h3>Mantequilla 200 g</h3>
+                    <div class="precio">RD$ 95</div>
+                    <div class="detalle">Perfecta para panes, postres y cocina diaria.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARNES -->
+        <section id="carnes">
+            <h2>Carnes y proteínas</h2>
+            <div class="grid-productos">
+                <div class="producto">
+                    <div class="producto-categoria">Carnes</div>
+                    <h3>Pechuga de pollo sin hueso</h3>
+                    <div class="precio">RD$ 220 / lb</div>
+                    <div class="detalle">Corte magro, ideal para preparaciones a la plancha.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="producto-categoria">Carnes</div>
+                    <h3>Carne molida de res</h3>
+                    <div class="precio">RD$ 260 / lb</div>
+                    <div class="detalle">Perfecta para pastas, albóndigas y guisos.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="producto-categoria">Carnes</div>
+                    <h3>Chuletas de cerdo</h3>
+                    <div class="precio">RD$ 230 / lb</div>
+                    <div class="detalle">Corte jugoso para asar o freír.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIMPIEZA -->
+        <section id="limpieza">
+            <h2>Limpieza y desinfección</h2>
+            <div class="grid-productos">
+                <div class="producto">
+                    <div class="producto-categoria">Limpieza</div>
+                    <h3>Detergente en polvo 1 kg</h3>
+                    <div class="precio">RD$ 145</div>
+                    <div class="detalle">Rendidor para ropa blanca y de color.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="producto-categoria">Limpieza</div>
+                    <h3>Cloro 1 L</h3>
+                    <div class="precio">RD$ 80</div>
+                    <div class="detalle">Desinfección profunda de pisos y superficies.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="producto-categoria">Limpieza</div>
+                    <h3>Desinfectante aromático 900 ml</h3>
+                    <div class="precio">RD$ 110</div>
+                    <div class="detalle">Fragancias agradables para tu hogar.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BEBIDAS -->
+        <section id="bebidas">
+            <h2>Bebidas y refrescos</h2>
+            <div class="grid-productos">
+                <div class="producto">
+                    <div class="producto-categoria">Bebidas</div>
+                    <h3>Agua purificada 1.5 L</h3>
+                    <div class="precio">RD$ 35</div>
+                    <div class="detalle">Mantente hidratado todo el día.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="producto-categoria">Bebidas</div>
+                    <h3>Refresco 2 L</h3>
+                    <div class="precio">RD$ 85</div>
+                    <div class="detalle">Variedad de sabores para tus reuniones.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="producto-categoria">Bebidas</div>
+                    <h3>Jugo de naranja 1 L</h3>
+                    <div class="precio">RD$ 95</div>
+                    <div class="detalle">Jugo pasteurizado listo para servir.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SNACKS -->
+        <section id="snacks">
+            <h2>Snacks y golosinas</h2>
+            <div class="grid-productos">
+                <div class="producto">
+                    <div class="producto-categoria">Snacks</div>
+                    <h3>Papas fritas 150 g</h3>
+                    <div class="precio">RD$ 55</div>
+                    <div class="detalle">Clásicas, crujientes y perfectas para compartir.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+                <div class="producto">
+                    <div class="producto-categoria">Snacks</div>
+                    <h3>Galletas surtidas</h3>
+                    <div class="precio">RD$ 75</div>
+                    <div class="detalle">Variedad de sabores para toda la familia.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+                <div class="producto">
+                    <div class="producto-categoria">Snacks</div>
+                    <h3>Chocolate en barra</h3>
+                    <div class="precio">RD$ 65</div>
+                    <div class="detalle">Chocolate cremoso para darse un gusto.</div>
+                    <button class="btn-comprar">Agregar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOGAR -->
+        <section id="hogar">
+            <h2>Hogar y cocina</h2>
+            <table>
+                <tr>
+                    <th>Producto</th>
+                    <th>Categoría</th>
+                    <th>Precio aproximado</th>
+                    <th>Descripción</th>
+                </tr>
+                <tr>
+                    <td>Juego de platos 6 piezas</td>
+                    <td>Hogar</td>
+                    <td>RD$ 450</td>
+                    <td>Platos resistentes para uso diario.</td>
+                </tr>
+                <tr>
+                    <td>Vasos de vidrio (set de 6)</td>
+                    <td>Hogar</td>
+                    <td>RD$ 320</td>
+                    <td>Vasos transparentes de alta durabilidad.</td>
+                </tr>
+                <tr>
+                    <td>Sartén antiadherente mediano</td>
+                    <td>Cocina</td>
+                    <td>RD$ 650</td>
+                    <td>Perfecto para cocinar con menos aceite.</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- VIDEOS -->
+        <section id="videos">
+            <h2>Videos llamativos de Ainara Super Market</h2>
+            <div class="videos-grid">
+                <div class="video-card">
+                    <h3>Recorrido por nuestras secciones</h3>
+                    <video controls poster="">
+                        <!-- Reemplaza src con un enlace a un video real si lo tienes -->
+                        <source src="video-supermercado-1.mp4" type="video/mp4" />
+                        Tu navegador no soporta reproducción de video.
+                    </video>
+                    <p>
+                        Conoce de forma rápida la distribución de Ainara Super Market y encuentra
+                        tus productos favoritos.
+                    </p>
+                </div>
+
+                <div class="video-card">
+                    <h3>Consejos para una compra inteligente</h3>
+                    <video controls>
+                        <source src="video-supermercado-2.mp4" type="video/mp4" />
+                        Tu navegador no soporta reproducción de video.
+                    </video>
+                    <p>
+                        Aprende a aprovechar las ofertas, comparar precios y organizar tu lista de
+                        compra.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOSOTROS -->
+        <section id="nosotros">
+            <h2>Sobre Ainara Super Market</h2>
+            <div class="info-grid">
+                <div>
+                    <p>
+                        Ainara Super Market nace con la visión de ofrecer una experiencia de compra
+                        completa, moderna y cercana a las necesidades de las familias de Santo Domingo
+                        Este. Nuestro objetivo principal es combinar calidad, variedad y buen servicio.
+                    </p>
+                    <ul>
+                        <li>Equipo de colaboradores capacitados y orientados al servicio.</li>
+                        <li>Proveedores seleccionados para garantizar frescura y seguridad alimentaria.</li>
+                        <li>Procesos internos organizados para agilizar tu visita y reducir tiempos de espera.</li>
+                    </ul>
+                </div>
+                <div class="tarjeta-color tarjeta-verde">
+                    <strong>Compromiso con el cliente:</strong>
+                    <p>
+                        Nos esforzamos cada día por mantener pasillos ordenados, productos bien
+                        señalizados y ofertas claras para facilitar tu compra.
+                    </p>
+                </div>
+            </div>
+            <br />
+            <div class="info-grid">
+                <div class="tarjeta-color tarjeta-azul">
+                    <strong>Innovación en el servicio:</strong>
+                    <p>
+                        Incorporamos herramientas tecnológicas y sistemas organizativos para
+                        manejar inventarios, coordinar entregas y responder a los requerimientos de
+                        nuestros clientes empresariales.
+                    </p>
+                </div>
+                <div class="tarjeta-color tarjeta-naranja">
+                    <strong>Responsabilidad social:</strong>
+                    <p>
+                        Colaboramos con iniciativas comunitarias y promovemos campañas de
+                        consumo responsable, evitando desperdicios y apoyando productores locales.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto">
+            <h2>Contáctanos y realiza tu pedido</h2>
+            <p>
+                Completa el siguiente formulario para pedidos a domicilio, sugerencias o comentarios.
+                Nuestro equipo te responderá en el menor tiempo posible.
+            </p>
+            <form>
+                <label for="nombre">Nombre completo:</label>
+                <input id="nombre" type="text" name="nombre" />
+
+                <label for="telefono">Teléfono:</label>
+                <input id="telefono" type="tel" name="telefono" />
+
+                <label for="correo">Correo electrónico:</label>
+                <input id="correo" type="email" name="correo" />
+
+                <label for="tipo-solicitud">Tipo de solicitud:</label>
+                <select id="tipo-solicitud" name="tipo-solicitud">
+                    <option>Pedido a domicilio</option>
+                    <option>Consulta de productos</option>
+                    <option>Comentario o sugerencia</option>
+                    <option>Otro</option>
+                </select>
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+
+                <input type="submit" value="Enviar mensaje" />
+            </form>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3>Ainara Super Market</h3>
+                <p>Tu aliado de confianza para la compra del hogar.</p>
+                <p>Dirección: Santo Domingo Este, República Dominicana.</p>
+            </div>
+            <div>
+                <h3>Contacto</h3>
+                <p>Teléfono: (809) 000-0000</p>
+                <p>WhatsApp: +1 809-000-0000</p>
+                <p>Correo: contacto@ainarasupermarket.com</p>
+            </div>
+            <div>
+                <h3>Horarios</h3>
+                <p>Lunes a sábado: 7:00 a.m. - 10:00 p.m.</p>
+                <p>Domingos y feriados: 8:00 a.m. - 8:00 p.m.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Ainara Super Market. Todos los derechos reservados.
+        </div>
+    </footer>
+
+</body>
+</html>
